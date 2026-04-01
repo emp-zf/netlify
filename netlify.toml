@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/*"
-  to = "https://cloud.nulledbytes.qpon/:splat"
+  to = "https://nucdn.nulledbytes.qpon/:splat"
   status = 200
   force = true
