@@ -1,10 +1,5 @@
 [[redirects]]
-  from = "/*"
-  to = "https://gcore.nulledbytes.qpon/:splat"
+  from = "/zhuofan/*"
+  to = "https://globe5g.nulledbytes.qpon/zhuofan/:splat"
   status = 200
   force = true
-  
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
