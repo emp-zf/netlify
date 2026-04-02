@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/*"
-  to = "https://vod.nulledbytes.qpon/:splat"
+  to = "https://gcore.nulledbytes.qpon/:splat"
   status = 200
   force = true
   
