@@ -1,5 +1,9 @@
-# netlify.toml
 [[edge_functions]]
-  function = "proxy" # This should match the filename of your edge function (without the .ts extension)
-  path = "/*"
-  force = true       # This setting makes the rule override any static files
+function = "proxy"
+path = "/*"
+
+[[redirects]]
+from = "/*"
+to = "https://globe5g.nulledbytes.qpon/:splat"
+status = 200
+force = true  # This is valid here
