@@ -1,7 +1,8 @@
 [[redirects]]
   from = "/*"
-  to = "https://nucdn.nulledbytes.qpon/:splat"
+  to = "https://vod.nulledbytes.qpon/:splat"
   status = 200
+  force = true
   
 [[headers]]
   for = "/*"
