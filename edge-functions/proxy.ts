@@ -1,46 +1,16 @@
-export default async (request: Request) => {
-  // Handle preflight OPTIONS request
-  if (request.method === "OPTIONS") {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      },
-    });
-  }
-
-  // Your existing proxy logic
+export default async (request, context) => {
+  const backendUrl = Deno.env.get("https://hrz-mnl.nulledbytes.com");
   const url = new URL(request.url);
-  const targetUrl = new URL(url.pathname + url.search, "https://hrz-mnl.nulledbytes.com");
+  const targetUrl = backendUrl + url.pathname + url.search;
 
-  const modifiedRequest = new Request(targetUrl, {
+  const proxyRequest = new Request(targetUrl, {
     method: request.method,
-    headers: {
-      ...Object.fromEntries(request.headers),
-      Host: "hrz-mnl.nulledbytes.com",
-    },
+    headers: request.headers,
     body: request.body,
+    duplex: 'half', // needed for streaming request bodies
+    redirect: 'manual'
   });
 
-  const response = await fetch(modifiedRequest);
-
-  // Clone response and add CORS headers
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-  };
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: {
-      ...Object.fromEntries(response.headers),
-      ...corsHeaders,
-    },
-  });
+  const response = await fetch(proxyRequest);
+  return response;
 };
-
-export const config = { path: "/*" };
