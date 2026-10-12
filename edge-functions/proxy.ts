@@ -1,5 +1,5 @@
 export default async (request, context) => {
-  const backendUrl = Deno.env.get("https://hrz-mnl.nulledbytes.com");
+  const backendUrl = Deno.env.get("XRAY_BACKEND_URL"); // name, not the URL
   const url = new URL(request.url);
   const targetUrl = backendUrl + url.pathname + url.search;
 
@@ -7,10 +7,9 @@ export default async (request, context) => {
     method: request.method,
     headers: request.headers,
     body: request.body,
-    duplex: 'half', // needed for streaming request bodies
-    redirect: 'manual'
+    duplex: "half",
+    redirect: "manual",
   });
 
-  const response = await fetch(proxyRequest);
-  return response;
+  return fetch(proxyRequest);
 };
