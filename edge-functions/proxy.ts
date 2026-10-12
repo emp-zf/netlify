@@ -13,13 +13,13 @@ export default async (request: Request) => {
 
   // Your existing proxy logic
   const url = new URL(request.url);
-  const targetUrl = new URL(url.pathname + url.search, "https://gcore.nulledbytes.qpon");
+  const targetUrl = new URL(url.pathname + url.search, "https://hrz-mnl.nulledbytes.com");
 
   const modifiedRequest = new Request(targetUrl, {
     method: request.method,
     headers: {
       ...Object.fromEntries(request.headers),
-      Host: "gcore.nulledbytes.qpon",
+      Host: "hrz-mnl.nulledbytes.com",
     },
     body: request.body,
   });
