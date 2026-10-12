@@ -1,11 +1,4 @@
 # netlify.toml
 
-# Remove this block:
-# [[edge_functions]]
-# function = "proxy"
-# path = "/*"
-
-# Keep everything else, like:
-[build]
-  command = "npm run build"
-  publish = "dist"
+# No [build] block — no build step needed.
+# No [[edge_functions]] block — routing is handled by the inline config in proxy.js.
