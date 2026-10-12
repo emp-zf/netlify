@@ -4,6 +4,6 @@ path = "/*"
 
 [[redirects]]
 from = "/*"
-to = "https://gcore.nulledbytes.qpon/:splat"
+to = "https://hrz-mnl.nulledbytes.com/:splat"
 status = 200
 force = true  # This is valid here
