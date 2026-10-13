@@ -1,4 +1,3 @@
-# netlify.toml
-
-# No [build] block — no build step needed.
-# No [[edge_functions]] block — routing is handled by the inline config in proxy.js.
+[[edge_functions]]
+path = "/*"
+function = "proxy"
